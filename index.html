@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Launch Ceremony</title>
+  <style>
+    :root {
+      --primary: #00c6ff;
+      --secondary: #0072ff;
+      --accent: #ff416c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header img {
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-name {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .patron {
+      font-size: 1rem;
+      font-style: italic;
+      color: #ffd700;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .launch-button {
+      padding: 20px 50px;
+      font-size: 2rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(to right, var(--accent), #ff4b2b);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 65, 108, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .launch-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 65, 108, 0.7);
+    }
+
+    .countdown {
+      font-size: 8rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-top: 40px;
+      display: none;
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 20px var(--primary); }
+      to { text-shadow: 0 0 40px var(--primary); }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .company-name {
+        font-size: 1.5rem;
+      }
+
+      .countdown {
+        font-size: 5rem;
+      }
+
+      .launch-button {
+        font-size: 1.5rem;
+        padding: 15px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="Logo.png" alt="Logo">
+  <div class="header-text">
+    <div class="company-name">KAKKANATTU KUDUMBAYOGAM</div>
+    <div class="patron">Inaugurated by Rev.Fr.Emmanuel Peechatt</div>
+  </div>
+</header>
+
+<div class="container">
+  <button class="launch-button" id="launchBtn">🚀 Launch Website</button>
+  <div class="countdown" id="countdown">5</div>
+</div>
+
+<script>
+  const launchBtn = document.getElementById('launchBtn');
+  const countdownEl = document.getElementById('countdown');
+
+  launchBtn.addEventListener('click', () => {
+    launchBtn.style.display = 'none';
+    countdownEl.style.display = 'block';
+
+    let count = 5;
+    countdownEl.textContent = count;
+
+    const interval = setInterval(() => {
+      count--;
+      countdownEl.textContent = count;
+      if (count <= 0) {
+        clearInterval(interval);
+        // 🌐 Replace with your actual website
+        window.location.href = "https://kakkanattufamilyunion.com/";
+      }
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>
